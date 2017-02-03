@@ -8,8 +8,8 @@ namespace ProjectSnake
     //Interface for an object in the world. This does not include creatures which is an own superclass.
     public interface IHasProperties
     {
-        float expModifier { get; }
-        int givenHP { get; }
+        float expModifier { get; set; }
+        int givenHP { get; set; }
         
     }
 }

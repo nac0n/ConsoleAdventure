@@ -59,7 +59,7 @@ namespace ProjectSnake
         //The whole logic for moving a creature. Player and Monster alike. It wait's for input from player.
         public void MoveCharacterPos()
         {
-            Console.SetCursorPosition(player.posX, player.posY);
+            Console.SetCursorPosition(player.GetPosX(), player.GetPosY());
             ConsoleKey input = Console.ReadKey().Key;
 
             //foreach(Monster m in monsterList)
@@ -68,30 +68,30 @@ namespace ProjectSnake
             //    m.setPrevPositionY(m.posY);
             //}
 
-            player.prevPosX = player.posX;
-            player.prevPosY = player.posY;
+            player.SetPrevPosX(player.GetPosX());
+            player.SetPrevPosY(player.GetPosY());
 
             switch (input)
             {
                 case ConsoleKey.LeftArrow:
-                    Console.SetCursorPosition(player.posX, player.posY);
+                    Console.SetCursorPosition(player.GetPosX(), player.GetPosY());
                     Console.Write(" ");
-                    player.posX -= 1;
+                    player.SetPosX(player.GetPosX() - 1);
                     break;
                 case ConsoleKey.RightArrow:
-                    Console.SetCursorPosition(player.posX, player.posY);
+                    Console.SetCursorPosition(player.GetPosX(), player.GetPosY());
                     Console.Write(" ");
-                    player.posX += 1;
+                    player.SetPosX(player.GetPosX() + 1);
                     break;
                 case ConsoleKey.UpArrow:
-                    Console.SetCursorPosition(player.posX, player.posY);
+                    Console.SetCursorPosition(player.GetPosX(), player.GetPosY());
                     Console.Write(" ");
-                    player.posY -= 1;
+                    player.SetPosY(player.GetPosY() - 1);
                     break;
                 case ConsoleKey.DownArrow:
-                    Console.SetCursorPosition(player.posX, player.posY);
+                    Console.SetCursorPosition(player.GetPosX(), player.GetPosY());
                     Console.Write(" ");
-                    player.posY += 1;
+                    player.SetPosY(player.GetPosY() + 1);
                     break;
                 case ConsoleKey.Q:
                     gameIsRunning = false;
@@ -105,30 +105,30 @@ namespace ProjectSnake
                 foreach (Monster m in ListHandler.GetInstance().GetMonsters())
                 {
                     int tempValue = rnd.Next(1, 5);
-                    m.prevPosX = m.posX;
-                    m.prevPosY = m.posY;
+                    m.SetPrevPosX(m.GetPosX());
+                    m.SetPrevPosY(m.GetPosY());
 
                     switch (tempValue)
                     {
                         case 1:
-                            Console.SetCursorPosition(m.posX, m.posY);
+                            Console.SetCursorPosition(m.GetPosX(), m.GetPosY());
                             Console.Write(" ");
-                            m.posX -= 1;
+                            m.SetPosX(m.GetPosX() - 1);
                             break;
                         case 2:
-                            Console.SetCursorPosition(m.posX, m.posY);
+                            Console.SetCursorPosition(m.GetPosX(), m.GetPosY());
                             Console.Write(" ");
-                            m.posX += 1;
+                            m.SetPosX(m.GetPosX() + 1);
                             break;
                         case 3:
-                            Console.SetCursorPosition(m.posX, m.posY);
+                            Console.SetCursorPosition(m.GetPosX(), m.GetPosY());
                             Console.Write(" ");
-                            m.posY -= 1;
+                            m.SetPosY(m.GetPosY() - 1);
                             break;
                         case 4:
-                            Console.SetCursorPosition(m.posX, m.posY);
+                            Console.SetCursorPosition(m.GetPosX(), m.GetPosY());
                             Console.Write(" ");
-                            m.posY += 1;
+                            m.SetPosY(m.GetPosY() + 1);
                             break;
                     }
                 }
@@ -138,11 +138,11 @@ namespace ProjectSnake
         //Redraws the world after player has made an input.
         public void Draw()
         {
-            Console.SetCursorPosition(player.posX, player.posY);
+            Console.SetCursorPosition(player.GetPosX(), player.GetPosY());
             Console.Write(player.sprite);
             foreach(Monster m in ListHandler.GetInstance().GetMonsters())
             {
-                Console.SetCursorPosition(m.posX, m.posY);
+                Console.SetCursorPosition(m.GetPosX(), m.GetPosY());
                 Console.Write(m.sprite);
             }
             DrawMenu();
@@ -181,48 +181,48 @@ namespace ProjectSnake
                 {
                     case '@':
                         player = new Player();
-                        player.posX = indexX;
-                        player.posY = indexY;
+                        player.SetPosX(indexX);
+                        player.SetPosY(indexY);
                         ListHandler.GetInstance().GetAllCollideables().Add(player);
                         break;
                     case 'O':
                         Stone tempStone = new Stone();
-                        tempStone.posX = indexX;
-                        tempStone.posY = indexY;
+                        tempStone.SetPosX(indexX);
+                        tempStone.SetPosX(indexY);
                         ListHandler.GetInstance().GetAllCollideables().Add(tempStone);
                         ListHandler.GetInstance().GetStones().Add(tempStone);
                         break;
                     case 'P':
                         Potion tempPotion = new Potion();
-                        tempPotion.posX = indexX;
-                        tempPotion.posY = indexY;
+                        tempPotion.SetPrevPosX(indexX);
+                        tempPotion.SetPrevPosY(indexY);
                         ListHandler.GetInstance().GetAllCollideables().Add(tempPotion);
                         ListHandler.GetInstance().GetPotions().Add(tempPotion);
                         break;
                     case '?':
                         Treasure tempTreasure = new Treasure();
-                        tempTreasure.posX = indexX;
-                        tempTreasure.posY = indexY;
+                        tempTreasure.SetPosX(indexX);
+                        tempTreasure.SetPosX(indexY);
                         ListHandler.GetInstance().GetAllCollideables().Add(tempTreasure);
                         ListHandler.GetInstance().GetTreasures().Add(tempTreasure);
                         break;
                     case '/':
                         stairs = new Stairs();
-                        stairs.posX = indexX;
-                        stairs.posY = indexY;
+                        stairs.SetPosX(indexX);
+                        stairs.SetPosX(indexY); 
                         ListHandler.GetInstance().GetAllCollideables().Add(stairs);
                         break;
                     case 'M':
                         Monster tempMonster = new Monster();
-                        tempMonster.posX = indexX;
-                        tempMonster.posY = indexY;
+                        tempMonster.SetPosX(indexX);
+                        tempMonster.SetPosY(indexY);
                         ListHandler.GetInstance().GetAllCollideables().Add(tempMonster);
                         ListHandler.GetInstance().GetMonsters().Add(tempMonster);
                         break;
                     case '#':
                         Wall tempWall = new Wall();
-                        tempWall.posX = indexX;
-                        tempWall.posY = indexY;
+                        tempWall.SetPosX(indexX);
+                        tempWall.SetPosX(indexY);
                         ListHandler.GetInstance().GetAllCollideables().Add(tempWall);
                         ListHandler.GetInstance().GetWalls().Add(tempWall);
                         break;
@@ -250,14 +250,14 @@ namespace ProjectSnake
         public void DrawMenu()
         {
             Console.SetCursorPosition(0, AMOUNT_OF_ROWS + 2);
-            Console.WriteLine("Health:"  + player.health);
+            Console.WriteLine("Health:"  + player.GetCurrentHealth());
             Console.SetCursorPosition(0, AMOUNT_OF_ROWS + 3);
-            Console.WriteLine("Level:" + player.level);
+            Console.WriteLine("Level:" + player.GetLevel());
 
             if(encounteredMonster != null)
             {
                 Console.SetCursorPosition(0, AMOUNT_OF_ROWS + 5);
-                Console.WriteLine("Enemy Health:" + encounteredMonster.health);
+                Console.WriteLine("Enemy Health:" + encounteredMonster.GetCurrentHealth());
             }
            
         }

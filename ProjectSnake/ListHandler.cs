@@ -10,7 +10,7 @@ namespace ProjectSnake
         //Singleton class
         private static ListHandler theOne;
 
-        private List<ICollideableObject> CollideableList;
+        private List<CollideableObject> CollideableList;
         private List<Creature> CreatureList;
         private List<Potion> potionList;
         private List<Treasure> treasureList;
@@ -20,7 +20,7 @@ namespace ProjectSnake
 
         private ListHandler()
         {
-            CollideableList = new List<ICollideableObject>();
+            CollideableList = new List<CollideableObject>();
             CreatureList = new List<Creature>();
             potionList = new List<Potion>();
             treasureList = new List<Treasure>();
@@ -38,7 +38,7 @@ namespace ProjectSnake
             return theOne;
         } 
 
-        public List<ICollideableObject> GetAllCollideables()
+        public List<CollideableObject> GetAllCollideables()
         {
             return CollideableList;
         }

@@ -6,87 +6,24 @@ using System.Text;
 namespace ProjectSnake
 {
     //Wall object in world. Unpassable! Unbreakable!
-    public class Wall : ICollideableObject
+    public class Wall : CollideableObject
     {
-        public int posX;
-        public int posY;
-        public int prevPosX;
-        public int prevPosY;
-        private int giveHP = 0;
-        private bool HasCollided;
+        private int posX;
+        private int posY;
+        private int prevPosX;
+        private int prevPosY;
+        private int maxHealth;// { get; set; }
+        private int health;// { get; set; }
+        private int damage;// { get; set; }
+        private int level; // { get; set; }
+        private bool HasCollided; // { get; set; }
 
-        int IHasPosition.posX
-        {
-            get { return posX; }
-
-            set { posX = value; }
-        }
-
-        int IHasPosition.posY
-        {
-            get { return posY; }
-
-            set { posY = value; }
-        }
-
-        int IHasPosition.prevPosX
-        {
-            get { return prevPosX; }
-
-            set { prevPosX = value; }
-        }
-
-        int IHasPosition.prevPosY
-        {
-            get { return prevPosY; }
-
-            set { prevPosY = value; }
-        }
-
-        bool ICollideable.HasCollided
-        {
-            get { return HasCollided; }
-
-            set { HasCollided = value; }
-        }
-
-        bool ICollideable.IsKillable
-        {
-            get { return false; }
-        }
-
-        bool ICollideable.IsDestructable
-        {
-            get { return false; }
-        }
-
-        bool ICollideable.IsObtainable
-        {
-            get { return false; }
-        }
-
-        bool ICollideable.IsPassable
-        {
-            get { return false; }
-        }
-
-        bool ICollideable.IsMoveable
-        {
-            get { return false; }
-        }
-
-        float IHasProperties.expModifier
-        {
-            get { return 0; }
-        }
-
-        int IHasProperties.givenHP
-        {
-            get { return 0; }
-        }
-        void ICollideableObject.SetBackPosition()
-        {
-
-        }
+        private bool IsKillAble; // { get; set;}
+        private bool IsDestructAble; // { get; set;}
+        private bool IsObtainAble; // { get; set;}
+        private bool IsPassAble; // { get; set; }
+        private bool IsMoveAble; // { get; set; }
+        private float expModifier; // { get; set; }
+        private int givenHP; // { get; set; }
     }
 }

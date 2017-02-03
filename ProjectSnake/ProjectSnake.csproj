@@ -49,7 +49,7 @@
     <Compile Include="Creature.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="ICollideable.cs" />
-    <Compile Include="ICollideableObject.cs" />
+    <Compile Include="CollideableObject.cs" />
     <Compile Include="IHasProperties.cs" />
     <Compile Include="IHasPosition.cs" />
     <Compile Include="LevelLoader.cs" />

@@ -17,10 +17,10 @@ namespace ProjectSnake
             sprite = "@";
             currentExp = 0;
             color = ConsoleColor.Yellow;
-            level = 1;
-            maxHealth = 20;
-            health = 20;
-            damage = 2;
+            SetLevel(1);
+            SetMaxHealth(20);
+            SetCurrentHealth(10);
+            SetDamage(2);
         }
 
         public Player(int posX, int posY)
@@ -28,17 +28,18 @@ namespace ProjectSnake
             sprite = "@";
             currentExp = 0;
             color = ConsoleColor.Yellow;
-            this.posX = posX;
-            this.posY = posY;
-            level = 1;
-            maxHealth = 20;
-            health = 20;
-            damage = 2;
+            SetPosX(posX);
+            SetPosY(posY);
+            SetLevel(1);
+            SetMaxHealth(20);
+            SetCurrentHealth(10);
+            SetDamage(2);
         }
         
         public void LevelUp()
         {
-            level += 1;
+            int currentLevel = GetLevel();
+            SetLevel(currentLevel + 1);
             double temp = maxExp * MaxExpModifier;
             maxExp = (int)temp;
             currentExp = 0;
