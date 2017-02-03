@@ -198,7 +198,7 @@ namespace ProjectSnake
             IsKillAble = x;
         }
 
-        public bool GetDestructable()
+        public bool Destructable()
         {
             return IsDestructAble;
         }
@@ -208,7 +208,7 @@ namespace ProjectSnake
             IsDestructAble = x;
         }
 
-        public bool GetObtainable()
+        public bool Obtainable()
         {
             return IsObtainAble;
         }
@@ -218,7 +218,7 @@ namespace ProjectSnake
             IsObtainAble = x;
         }
 
-        public bool GetPassable()
+        public bool Passable()
         {
             return IsPassAble;
         }
@@ -228,7 +228,7 @@ namespace ProjectSnake
             IsPassAble = x;
         }
 
-        public bool GetMoveable()
+        public bool Moveable()
         {
             return IsMoveAble;
         }

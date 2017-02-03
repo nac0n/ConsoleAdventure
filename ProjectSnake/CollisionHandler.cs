@@ -26,8 +26,8 @@ namespace ProjectSnake
                     {
                         if(clist.ElementAt(i).GetPosX() == clist.ElementAt(x).GetPosX() && clist.ElementAt(i).GetPosY() == clist.ElementAt(x).GetPosX())
                         {
-                            //clist.ElementAt(i).HasCollided = true;
-                            //clist.ElementAt(x).HasCollided = true;
+                            clist.ElementAt(i).SetHasCollided(true);
+                            clist.ElementAt(x).SetHasCollided(true);
                             AfterCollision(clist.ElementAt(i), clist.ElementAt(x));
                         }
                     }
@@ -39,13 +39,13 @@ namespace ProjectSnake
         {
             var clist = ListHandler.GetInstance().GetAllCollideables();
 
-            if (x.GetDestructable() || y.GetDestructable())
+            if (x.Destructable() || y.Destructable())
             {
-                if (x.GetDestructable())
+                if (x.Destructable())
                 {
                     RemoveObject(x);
                 }
-                if (y.GetDestructable())
+                if (y.Destructable())
                 {
                     RemoveObject(y);
                 }
@@ -55,13 +55,13 @@ namespace ProjectSnake
                     y.SetBackPosition();
                 }
             }
-            else if (x.GetObtainable() || y.GetObtainable())
+            else if (x.Obtainable() || y.Obtainable())
             {
-                if (x.GetObtainable())
+                if (x.Obtainable())
                 {
 
                 }
-                if (y.GetObtainable())
+                if (y.Obtainable())
                 {
 
                 }
@@ -71,13 +71,13 @@ namespace ProjectSnake
                     y.SetBackPosition();
                 }
             }
-            else if (x.GetMoveable() || y.GetMoveable())
+            else if (x.Moveable() || y.Moveable())
             {
-                if (x.GetMoveable())
+                if (x.Moveable())
                 {
 
                 }
-                if (y.GetMoveable())
+                if (y.Moveable())
                 {
 
                 }
@@ -87,13 +87,13 @@ namespace ProjectSnake
                     y.SetBackPosition();
                 }
             }
-            else if (x.GetPassable() || y.GetPassable())
+            else if (x.Passable() || y.Passable())
             {
-                if (x.GetPassable())
+                if (x.Passable())
                 {
 
                 }
-                if (y.GetPassable())
+                if (y.Passable())
                 {
 
                 }
@@ -132,7 +132,7 @@ namespace ProjectSnake
 
         public static void RemoveObject(CollideableObject co)
         {
-            if(co.GetDestructable())
+            if(co.Destructable())
             {
                 PurgeFromWorld(co);
             }
@@ -140,12 +140,12 @@ namespace ProjectSnake
 
         public static void ObtainObject(CollideableObject obj1, CollideableObject obj2)
         {
-            if(obj1.GetObtainable())
+            if(obj1.Obtainable())
             {
                 //obj2.GiveHP();
                 //obj1.GiveHP();
             }
-            else if(obj2.GetObtainable())
+            else if(obj2.Obtainable())
             {
 
             }
